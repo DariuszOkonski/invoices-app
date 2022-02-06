@@ -34,7 +34,7 @@ export class InvoicePreviewComponent implements OnInit {
     const { id } = this.route.snapshot.params;
     console.log(id)
     
-    this.invoice = this.dataService.getInvoice(id);
+    this.invoice = this.dataService.getInvoice(id)[0];
   }
 
 }
