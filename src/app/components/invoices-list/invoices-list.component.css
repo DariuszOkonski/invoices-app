@@ -1,0 +1,12 @@
+#dropdown select{
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 4px;
+}
+
+#dropdown option {
+    background-color: #fff;
+    color: #6c757d;
+}

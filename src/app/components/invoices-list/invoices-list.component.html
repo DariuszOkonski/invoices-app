@@ -1,7 +1,7 @@
 <p class="h2 mb-3">Invoices List</p>
 
 
-<div class="mb-3">
+<div id="dropdown" class="mb-3">
   <select 
     [(ngModel)] = "supplierSelected"
     (ngModelChange)="onFilterInvoicesBySupplierName($event)"
@@ -11,47 +11,8 @@
       [value]="supplier.id"
       >{{ this.supplier.name}}</option>
   </select>
-
-  <br>
-  selected value: {{supplierSelected}}
 </div>
 
-<!-- <select 
-  class="dropdown mb" 
-  (change) = "filterInvoicesBySupplierName($event)"
-  [(ngModel)] = "selected"
->
-  
-  <option
-    *ngFor="let supplier of this.suppliers" 
-    class="dropdown-item" 
-    [value]="supplier.id"
-    >{{ this.supplier.name }}
-  </option>
-
-</select> -->
-
-
-<!-- <div class="dropdown mb-3">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-    Filter by Suppliers
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a
-      *ngFor="let supplier of this.suppliers" 
-      class="dropdown-item" 
-      (change) = "filterInvoicesBySupplierName()"
-      >{{ this.supplier.name }}</a>
-  </div>
-
-  <select class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <option
-      *ngFor="let supplier of this.suppliers" 
-      class="dropdown-item" 
-      >{{ this.supplier.name }}</option>
-  </select>
-</div> -->
 
 <table class="table">
     <thead class="thead-dark">
