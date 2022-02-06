@@ -30,6 +30,6 @@ export class InvoicesListComponent implements OnInit {
   
 
   onFilterInvoicesBySupplierName(id: string) {
-      console.log(this.dataService.FilterInvoicesBySupplierName(id))
+      this.invoices = this.dataService.filterInvoicesBySupplierName(id);
   }
 }

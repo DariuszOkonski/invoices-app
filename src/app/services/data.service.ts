@@ -96,11 +96,12 @@ export class DataService {
     return this.suppliers;
   }
 
-  FilterInvoicesBySupplierName(id: string) {
-    console.log('data service')
-    console.log(id);
+  filterInvoicesBySupplierName(id: string) {
+    if(id === 'all') {
+      return this.invoices;
+    }
 
-    return 'hello world'
+    return this.invoices.filter(invoice => invoice.supplier.id === id);
   }
 
   // TODO - temporarly, write logic
