@@ -3,6 +3,7 @@ import { Invoice } from './../models/Invoice';
 import { Supplier } from './../models/Supplier';
 
 const fakeSuppliers: Supplier[] = [
+  {id: 'all', name: 'All', address: ''},
   {id: 'fd05b131-9ceb-4dc3-97f8-ed69b719a1c3', name: 'Infinite Sp. z o.o.', address: 'ul.Projektowa 1, 20-209 Lublin'},
   {id: 'f3469a56-29c1-4912-aa30-c1dac1e37e01', name: 'Moovem Sp z o.o', address: 'Al. Jerozolimskie 100. 00-807 Warszawa '},
   {id: 'bef10e62-e49a-4437-9766-9fe5cf553eb4', name: 'Divante', address: 'ul.Dmowskiego 17, 50-203 Wrocław'},
@@ -89,6 +90,17 @@ export class DataService {
 
   getInvoices() {
     return this.invoices;
+  }
+
+  getSuppliers() {
+    return this.suppliers;
+  }
+
+  FilterInvoicesBySupplierName(id: string) {
+    console.log('data service')
+    console.log(id);
+
+    return 'hello world'
   }
 
   // TODO - temporarly, write logic

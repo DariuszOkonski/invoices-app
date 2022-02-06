@@ -1,18 +1,57 @@
 <p class="h2 mb-3">Invoices List</p>
 
-<div class="dropdown mb-3">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-      Filter by Suppliers
-    </a>
+
+<div class="mb-3">
+  <select 
+    [(ngModel)] = "supplierSelected"
+    (ngModelChange)="onFilterInvoicesBySupplierName($event)"
+  >
+    <option 
+      *ngFor="let supplier of this.suppliers"
+      [value]="supplier.id"
+      >{{ this.supplier.name}}</option>
+  </select>
+
+  <br>
+  selected value: {{supplierSelected}}
+</div>
+
+<!-- <select 
+  class="dropdown mb" 
+  (change) = "filterInvoicesBySupplierName($event)"
+  [(ngModel)] = "selected"
+>
   
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Company 1</a>
-      <a class="dropdown-item" href="#">Company 2</a>
-      <a class="dropdown-item" href="#">Company 3</a>
-      <a class="dropdown-item" href="#">Company 4</a>
-      <a class="dropdown-item" href="#">Company 5</a>
-    </div>
+  <option
+    *ngFor="let supplier of this.suppliers" 
+    class="dropdown-item" 
+    [value]="supplier.id"
+    >{{ this.supplier.name }}
+  </option>
+
+</select> -->
+
+
+<!-- <div class="dropdown mb-3">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+    Filter by Suppliers
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a
+      *ngFor="let supplier of this.suppliers" 
+      class="dropdown-item" 
+      (change) = "filterInvoicesBySupplierName()"
+      >{{ this.supplier.name }}</a>
   </div>
+
+  <select class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <option
+      *ngFor="let supplier of this.suppliers" 
+      class="dropdown-item" 
+      >{{ this.supplier.name }}</option>
+  </select>
+</div> -->
 
 <table class="table">
     <thead class="thead-dark">
@@ -31,11 +70,13 @@
         <td>{{ this.invoice.amount | currency: 'GBP' }}</td>
         <td>
           <button 
+            routerLink="/invoices/{{ this.invoice.number }}"
             class="btn btn-primary btn-sm m-1"
             routerLink="/invoices/1"
           >invoice</button>
           
           <button 
+            routerLink="/suppliers/{{ this.invoice.supplier.id }}"
             class="btn btn-secondary btn-sm m-1"
             routerLink="/suppliers/3"
           >supplier</button>
