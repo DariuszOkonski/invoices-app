@@ -1,17 +1,7 @@
-<!-- <nav class="navbar navbar-dark bg-dark mb-3">
-    <div class="container">        
-        <a href="/" class="navbar-brand">
-            <i class="fa fa-address-card-o text-light mr-1 fa-lg"></i>
-            Invoices-App
-        </a>
-    </div>
-</nav> -->
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" routerLink="/">
             <i class="fa fa-address-card-o text-light mr-1 fa-lg"></i>
             Invoices-App
         </a>
@@ -21,18 +11,18 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">New Invoice</a>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/invoices/new">New Invoice</a>
                 </li>
                 
             </ul>
-
+            
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Current Role: <strong>Guest</strong></a>
+                    <span class="nav-link">Current Role: <strong>Guest</strong></span>
                 </li>                
             </ul>
             

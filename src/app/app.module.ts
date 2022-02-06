@@ -9,7 +9,6 @@ import { InvoiceNewComponent } from './components/invoice-new/invoice-new.compon
 import { InvoicePreviewComponent } from './components/invoice-preview/invoice-preview.component';
 import { SupplierPreviewComponent } from './components/supplier-preview/supplier-preview.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
 @NgModule({
   declarations: [
     AppComponent,
