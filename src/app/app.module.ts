@@ -10,6 +10,7 @@ import { InvoicePreviewComponent } from './components/invoice-preview/invoice-pr
 import { SupplierPreviewComponent } from './components/supplier-preview/supplier-preview.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
+import { NoAccessComponent } from './components/no-access/no-access.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     InvoiceNewComponent,
     InvoicePreviewComponent,
     SupplierPreviewComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NoAccessComponent
   ],
   imports: [
     BrowserModule,

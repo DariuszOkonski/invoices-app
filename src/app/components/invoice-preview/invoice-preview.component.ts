@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
 import { Invoice } from './../../models/Invoice';
+import { Roles } from 'src/app/models/Roles';
+import { isPermitedHighAccess } from './../../utilities/utilities';
 
 @Component({
   selector: 'app-invoice-preview',
@@ -27,6 +29,10 @@ export class InvoicePreviewComponent implements OnInit {
         address: ''
       }
     }
+  }
+
+  onIsPermitedHighAccess() {
+    return isPermitedHighAccess(Roles[this.dataService.getCurrentRole()]);
   }
 
   ngOnInit(): void {

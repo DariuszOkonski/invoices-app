@@ -1,6 +1,8 @@
 <p class="h2 mb-3">Invoice Preview</p>
 
-<div class="card">
+<div 
+    *ngIf="onIsPermitedHighAccess()"
+    class="card">
     <div class="card-header">
         <h4 class="card-title">Invoice Data</h4>
     </div>
@@ -28,6 +30,10 @@
         routerLink="/"
         >Close</button>
     </div>
+  </div>
+
+  <div *ngIf="!onIsPermitedHighAccess()">
+      <app-no-access></app-no-access>
   </div>
   
 

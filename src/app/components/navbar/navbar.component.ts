@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Roles } from 'src/app/models/Roles';
 import { DataService } from 'src/app/services/data.service';
-import { isPermitedHighAccess, isPermitedLowAccess } from './../../utilities/utilities';
+import { isPermitedHighAccess } from './../../utilities/utilities';
 
 @Component({
   selector: 'app-navbar',
@@ -27,10 +27,6 @@ export class NavbarComponent implements OnInit {
 
   onIsPermitedHighAccess() {
     return isPermitedHighAccess(this.currentRole);
-  }
-
-  onIsPermitedLowAccess() {
-    return isPermitedLowAccess(this.currentRole)
   }
 
   onChangeRole(role: string) {
