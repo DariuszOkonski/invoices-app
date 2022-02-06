@@ -5,7 +5,9 @@
             <h4 class="card-title">Supplier Data</h4>
         </div>
         <div class="card-body">
-
+            <p>{{ this.supplier.id }}</p>
+            <p>{{ this.supplier.name }}</p>
+            <p>{{ this.supplier.address }}</p>
 
             <form>
                 <div class="form-group">
@@ -15,7 +17,7 @@
                             class="form-control" 
                             name="id"
                             id="id"
-                            value="123"
+                            value=""
                             [disabled]="true"
                         >
                 </div>

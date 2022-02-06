@@ -30,8 +30,9 @@ export class InvoicePreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Invoice Preview')
+    console.log('Invoice Preview class')
     const { id } = this.route.snapshot.params;
+    console.log(id)
     
     this.invoice = this.dataService.getInvoice(id);
   }
