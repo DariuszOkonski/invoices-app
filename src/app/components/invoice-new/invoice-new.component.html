@@ -2,85 +2,101 @@
 
 <div class="card card-body">
     <form>
-        <div class="form-group">
-            <label for="date">Date:</label>
-                <input 
-                    type="date" 
-                    class="form-control" 
-                    name="date"
-                    id="date"
-                >
-        </div>
-        
-        <div class="form-group">
-            <label for="invoice-number">Invoice Number:</label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    name="invoice-number"
-                    id="invoice-number"
-                >
-        </div>
+      <div class="form-group">
+        <label for="invoice-number">Invoice Number:</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                name="invoice-number"
+                id="invoice-number"
+                disabled="true"
+                value="{{this.number}}"
+            >
+      </div> 
 
-        <div class="form-group">
-            <label for="supplier">Supplier:</label>
-            <select class="form-control" name="supplier" id="supplier">
-                <option>Default select 1</option>
-                <option>Default select 2</option>
-                <option>Default select 3</option>
-                <option>Default select 4</option>
-              </select>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="row">
-                
-                <div class="col-sm-6 mb-3">
-                  <div class="card">
-                    <div class="card-body">                      
-                        <label for="supplier">Supplier:</label>
-                        <select class="form-control" name="supplier" id="supplier">
-                            <option>Default select 1</option>
-                            <option>Default select 2</option>
-                            <option>Default select 3</option>
-                            <option>Default select 4</option>
-                          </select>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Supplier:</h5>
-                      <p class="card-text">ID: 123</p>
-                      <p class="card-text">Name: Some Company Name</p>
-                      <p class="card-text">Address: 50 Main Street, London</p>
-                    </div>
+      <div class="form-group">
+        <div class="row">
+            
+            <div class="col-sm-6 mb-3">
+              <div class="card">
+                <div class="card-body">                      
+                    
+                  <div class="form-group">
+                    <label for="date">Date:</label>
+                        <input 
+                            type="date" 
+                            class="form-control" 
+                            name="date"
+                            [(ngModel)]="this.date"
+                            required
+                        >
                   </div>
                 </div>
               </div>
-        </div>
+            </div>
 
 
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  
+                  <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input 
+                        type="number"
+                        class="form-control"
+                        name="amount"
+                        [(ngModel)]="this.amount"
+                        required
+                      >
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            
+            <div class="col-sm-6 mb-3">
+              <div class="card">
+                <div class="card-body">                      
+                    <label for="supplier">Supplier:</label>
+                    
+                    <select
+                      [(ngModel)]="this.supplierSelected"
+                      (ngModelChange)="updateSelectedSupplier($event)" 
+                      class="form-control" name="supplier" id="supplier"
+                    >
+                        
+                        <option
+                          *ngFor="let supplier of this.suppliers"
+                          [value]="supplier.id"
+                        >{{ this.supplier.name }}</option>
+                        
+                    </select>
+                </div>
+              </div>
+            </div>
 
 
-        <div class="form-group">
-            <label for="amount">Amount:</label>
-            <input 
-                type="number"
-                class="form-control"
-                name="amount"
-                id="amount"
-            >
-        </div>
-
-
-
+            <div *ngIf="supplierSelected != ''" class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Supplier:</h5>
+                  <p class="card-text">ID: <small>{{ this.supplier.id }}</small></p>
+                  <p class="card-text">Name: {{ this.supplier.name }}</p>
+                  <p class="card-text">Address: {{ this.supplier.address }}</p>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+    </div>
         <input 
+            (click)="onAddNewInvoice()"
             type="submit" 
             value="Save" 
             class="btn btn-primary m-1"
