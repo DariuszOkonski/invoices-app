@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { Supplier } from './../../models/Supplier';
+import { Roles } from 'src/app/models/Roles';
+import { isPermitedHighAccess, isPermitedLowAccess } from './../../utilities/utilities';
 
 @Component({
   selector: 'app-supplier-preview',
@@ -29,6 +31,14 @@ export class SupplierPreviewComponent implements OnInit {
     this.supplier = this.dataService.getSupplier(id);
 
     console.log(this.supplier)
+  }
+
+  onIsPermitedHighAccess() {
+    return isPermitedHighAccess(Roles[this.dataService.getCurrentRole()]);
+  }
+
+  onIsPermitedLowAccess() {
+    return isPermitedLowAccess(Roles[this.dataService.getCurrentRole()])
   }
 
 }
