@@ -1,7 +1,9 @@
 <p class="h2 mb-3">Invoices List</p>
 
 
-<div id="dropdown" class="mb-3">
+<div 
+  *ngIf="onIsPermitedHighAccess()"
+  id="dropdown" class="mb-3">
   <select 
     [(ngModel)] = "supplierSelected"
     (ngModelChange)="onFilterInvoicesBySupplierName($event)"
@@ -31,12 +33,14 @@
         <td>{{ this.invoice.amount | currency: 'GBP' }}</td>
         <td>
           <button 
+            *ngIf="onIsPermitedHighAccess()"
             routerLink="/invoices/{{ this.invoice.number }}"
             class="btn btn-primary btn-sm m-1"
             routerLink="/invoices/1"
           >invoice</button>
           
           <button 
+            *ngIf="onIsPermitedLowAccess()"
             routerLink="/suppliers/{{ this.invoice.supplier.id }}"
             class="btn btn-secondary btn-sm m-1"
             routerLink="/suppliers/3"

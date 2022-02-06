@@ -1,7 +1,7 @@
 import { Roles } from 'src/app/models/Roles';
 
 export function isPermitedHighAccess(currentRole: string) {
-    if(currentRole === Roles.ADMIN || currentRole === Roles.GUEST)
+    if(currentRole === Roles.ADMIN || currentRole === Roles.USER)
       return true;
     
     return false;
