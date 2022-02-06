@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InvoicesListComponent } from './components/invoices-list/invoices-list.component';
 import { InvoiceNewComponent } from './components/invoice-new/invoice-new.component';
 import { InvoicePreviewComponent } from './components/invoice-preview/invoice-preview.component';
+import { SupplierPreviewComponent } from './components/supplier-preview/supplier-preview.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { InvoicePreviewComponent } from './components/invoice-preview/invoice-pr
     NavbarComponent,
     InvoicesListComponent,
     InvoiceNewComponent,
-    InvoicePreviewComponent
+    InvoicePreviewComponent,
+    SupplierPreviewComponent
   ],
   imports: [
     BrowserModule,
