@@ -1,24 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-    <a class="navbar-brand" href="#">Filter</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-            Suppliers
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Company 1</a>
-            <a class="dropdown-item" href="#">Company 2</a>
-            <a class="dropdown-item" href="#">Company 3</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<p class="h2">Invoices List</p>
 
+<div class="dropdown mb-3">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+      Filter by Suppliers
+    </a>
+  
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">Company 1</a>
+      <a class="dropdown-item" href="#">Company 2</a>
+      <a class="dropdown-item" href="#">Company 3</a>
+      <a class="dropdown-item" href="#">Company 4</a>
+      <a class="dropdown-item" href="#">Company 5</a>
+    </div>
+  </div>
 
 <table class="table">
     <thead class="thead-dark">
@@ -31,14 +25,15 @@
       </tr>
     </thead>
     <tbody>
+
       <tr>
         <th scope="row">1</th>
         <td>123-21</td>
         <td>Zabka</td>
         <td>$124.54</td>
         <td>
-            <button class="btn btn-primary btn-sm">see</button>
-            <button class="btn btn-secondary btn-sm ml-1">details</button>
+            <button class="btn btn-primary btn-sm m-1">see</button>
+            <button class="btn btn-secondary btn-sm m-1">details</button>
         </td>
       </tr>
 
@@ -48,8 +43,8 @@
         <td>Zabka</td>
         <td>$124.54</td>
         <td>
-            <button class="btn btn-primary btn-sm">see</button>
-            <button class="btn btn-secondary btn-sm ml-1">details</button>
+            <button class="btn btn-primary btn-sm m-1">see</button>
+            <button class="btn btn-secondary btn-sm m-1">details</button>
         </td>
       </tr>
 
@@ -59,8 +54,8 @@
         <td>Zabka</td>
         <td>$124.54</td>
         <td>
-            <button class="btn btn-primary btn-sm">see</button>
-            <button class="btn btn-secondary btn-sm ml-1">details</button>
+            <button class="btn btn-primary btn-sm m-1">see</button>
+            <button class="btn btn-secondary btn-sm m-1">details</button>
         </td>
       </tr>
 
@@ -70,9 +65,11 @@
         <td>Zabka</td>
         <td>$124.54</td>
         <td>
-            <button class="btn btn-primary btn-sm">see</button>
-            <button class="btn btn-secondary btn-sm ml-1">details</button>
+            <button class="btn btn-primary btn-sm m-1">see</button>
+            <button class="btn btn-secondary btn-sm m-1">details</button>
         </td>
       </tr>
+
+
     </tbody>
   </table>
