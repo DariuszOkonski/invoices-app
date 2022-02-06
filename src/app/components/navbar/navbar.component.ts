@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.currentRole)
-    console.log(this.roles)    
+    console.log(Roles.ADMIN == this.currentRole)
   }
 
   onChangeRole(role: string) {
