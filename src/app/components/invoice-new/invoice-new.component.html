@@ -1,6 +1,8 @@
 <p class="h2 mb-3">New Invoice</p>
 
-<div class="card card-body">
+<div 
+  *ngIf="onIsPermitedHighAccess()"
+  class="card card-body">
     <form>
       <div class="form-group">
         <label for="invoice-number">Invoice Number:</label>
@@ -111,3 +113,8 @@
     </form>
 </div>
 
+<div
+  *ngIf="!onIsPermitedHighAccess()"
+> 
+  <app-no-access></app-no-access>
+</div>

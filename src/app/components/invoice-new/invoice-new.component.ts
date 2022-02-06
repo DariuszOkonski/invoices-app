@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Supplier } from './../../models/Supplier';
 import { Invoice } from './../../models/Invoice';
+import { Roles } from 'src/app/models/Roles';
+import { isPermitedHighAccess } from './../../utilities/utilities';
 
 
 @Component({
@@ -56,6 +58,10 @@ export class InvoiceNewComponent implements OnInit {
       return;
       
     this.dataService.addNewInvoice(newInvoice);   
+  }
+
+  onIsPermitedHighAccess() {
+    return isPermitedHighAccess(Roles[this.dataService.getCurrentRole()]);
   }
 
   generateId() {
