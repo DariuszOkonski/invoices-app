@@ -6,21 +6,21 @@
     </div>
     <div class="card-body">
       <h5 class="card-title">Date:</h5>
-      <p class="card-text">12/10/2022</p>
+      <p class="card-text">{{ this.invoice.orderAt | date}}</p>
       
       <h5 class="card-title">Number:</h5>
-      <p class="card-text">123</p>
+      <p class="card-text">{{this.invoice.number}}</p>
             
       <h5 class="card-title">Supplier:</h5>
       <p class="card-text">
-          <strong>Name: </strong> <span>Some Company</span>
+          <strong>Name: </strong> <span>{{ this.invoice.supplier.name }}</span>
       </p>      
       <p class="card-text">
-          <strong>Address: </strong> <span>50 Main street, London</span>
+          <strong>Address: </strong> <span>{{ this.invoice.supplier.address }}</span>
       </p>
       
       <h5 class="card-title">Amount:</h5>
-      <p class="card-text">$ 1230.00</p>
+      <p class="card-text">{{ this.invoice.amount | currency}}</p>
 
       
       <button 
