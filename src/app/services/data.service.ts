@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Roles } from '../models/Roles';
 import { Invoice } from './../models/Invoice';
 import { Supplier } from './../models/Supplier';
 
@@ -80,18 +81,52 @@ const fakeInvoices: Invoice[] = [
 ]
 
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   invoices: Invoice[];
   suppliers: Supplier[];
+  currentRole: Roles;
+  roles: string[];
 
 
   constructor() { 
     this.invoices = [...fakeInvoices];
-    this.suppliers = [...fakeSuppliers];  
+    this.suppliers = [...fakeSuppliers];
+    this.currentRole = Roles.ADMIN;
+    this.roles = [];
+    this.mapRolesToStringArray();
+  }
+
+  getRoles() {
+    return this.roles;
+  }
+
+  // this method must be refactored
+  changeRole(role: string) {
+    switch (role) {
+      case 'USER':
+          this.currentRole = Roles.USER;
+        break;
+      case 'GUEST':
+          this.currentRole = Roles.GUEST;
+        break    
+      default:
+        this.currentRole = Roles.ADMIN
+    }
+  }
+
+  mapRolesToStringArray() {
+    for (const value in Roles) {
+      if(isNaN(Number(value)))
+        this.roles.push(value);
+        
+    }
+  }
+
+  getCurrentRole() {
+    return this.currentRole;
   }
 
   getInvoices() {

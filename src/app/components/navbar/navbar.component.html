@@ -22,11 +22,11 @@
             
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <span class="nav-link">Current Role: <strong>Guest</strong></span>
+                    <span class="nav-link">Current Role: <strong>{{ this.currentRole }}</strong></span>
                 </li>                
             </ul>
             
-            <ul class="navbar-nav ml-auto">                
+            <!-- <ul class="navbar-nav ml-auto">                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         Roles
@@ -37,7 +37,21 @@
                         <a class="dropdown-item" href="#">Guest</a>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
+
+
+            <div id="dropdown">
+                <select
+                    [(ngModel)] = "roleSelected"
+                    (ngModelChange)="onChangeRole($event)"
+                >
+                    <option
+                        *ngFor="let role of this.roles"
+                        [value]="role"
+                    >{{ role }}</option>
+                </select>
+            </div>
+
         </div>
     </div>
     </nav>
