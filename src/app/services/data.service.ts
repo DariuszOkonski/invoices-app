@@ -11,11 +11,6 @@ const fakeSuppliers: Supplier[] = [
   {id: 'bef10e62-e26a-4437-9766-9fe5cf553ec4', name: 'Comarch', address: 'ul.Kazimierz 17, 51-288 Kraków'},
 ]
 
-// const fakeSuppliers: Supplier[] = [];
-
-
-// const fakeInvoices: Invoice[] =[];
-
 const fakeInvoices: Invoice[] = [
   {
     number: 'dc0ff5f1-0126-40b1-bbd7-afff24d2252b',
@@ -92,18 +87,45 @@ export class DataService {
 
 
   constructor() { 
-    this.invoices = [...fakeInvoices];
-    this.suppliers = [...fakeSuppliers];
+    this.invoices = [];
+    this.suppliers = [];
     this.currentRole = Roles.ADMIN;
     this.roles = [];
     this.mapRolesToStringArray();
+    this.getSuppliersFromLocalStorage();
+    this.getInvoicesFromLocalStorage();
+  }
+
+  getSuppliersFromLocalStorage() {
+    if(localStorage.getItem('suppliers') === null) {
+      this.suppliers = [...fakeSuppliers];
+      localStorage.setItem('suppliers', JSON.stringify(this.suppliers));
+      this.getSuppliersFromLocalStorage();
+    } else {
+      const tempSuppliers = localStorage.getItem('suppliers')
+      if(tempSuppliers !== null) {
+        this.suppliers = JSON.parse(tempSuppliers);
+      }
+    }
+  }
+
+  getInvoicesFromLocalStorage() {
+    if(localStorage.getItem('invoices') === null) {
+      this.invoices = [...fakeInvoices];
+      localStorage.setItem('invoices', JSON.stringify(this.invoices));
+      this.getInvoicesFromLocalStorage();
+    } else {
+      const tempInvoices = localStorage.getItem('invoices');
+      if(tempInvoices !== null) {
+        this.invoices = JSON.parse(tempInvoices);
+      }
+    }
   }
 
   getRoles() {
     return this.roles;
   }
 
-  // this method must be refactored
   changeRole(role: string) {
     switch (role) {
       case 'USER':
@@ -120,8 +142,7 @@ export class DataService {
   mapRolesToStringArray() {
     for (const value in Roles) {
       if(isNaN(Number(value)))
-        this.roles.push(value);
-        
+        this.roles.push(value);        
     }
   }
 
@@ -147,6 +168,7 @@ export class DataService {
 
   addNewInvoice(invoice: Invoice) {
     this.invoices.push(invoice);
+    localStorage.setItem('invoices', JSON.stringify(this.invoices));
   }
 
   getInvoice(id: string) {
@@ -160,13 +182,9 @@ export class DataService {
     }
 
     return invoice;
-    // return this.invoices.filter(invoice => invoice.number === id);
   }
 
   saveEditedSupplier(supplier: Supplier) {
-    console.log('data service')
-    console.log(supplier)
-
     this.suppliers = this.suppliers.map(sup => {
       if(sup.id === supplier.id)
         return supplier;
@@ -180,12 +198,13 @@ export class DataService {
           supplier
         }
       }
-
       return inv
     })
+
+    localStorage.setItem('suppliers', JSON.stringify(this.suppliers));
+    localStorage.setItem('invoices', JSON.stringify(this.invoices));
   }
 
-  // TODO - temporarly, write logic
   getSupplier(id: string) {
     const tempSupplier = this.suppliers.find(supplier => supplier.id === id);
 
