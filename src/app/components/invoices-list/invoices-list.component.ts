@@ -24,7 +24,12 @@ export class InvoicesListComponent implements OnInit {
   ) { 
     this.invoices = dataService.getInvoices();
     this.suppliers = dataService.getSuppliers();
-    this.supplierSelected = this.suppliers[0].id;
+
+    if(this.suppliers.length > 0) {
+      this.supplierSelected = this.suppliers[0].id;
+    } else {
+      this.supplierSelected = '';
+    }
   }
 
   ngOnInit(): void {

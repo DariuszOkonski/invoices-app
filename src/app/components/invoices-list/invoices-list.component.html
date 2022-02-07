@@ -1,7 +1,8 @@
 <p class="h2 mb-3">Invoices List</p>
 
 
-<div 
+<div
+  *ngIf="this.suppliers.length > 0"
   id="dropdown" class="mb-3">
   <select 
     [disabled]="!onIsPermitedHighAccess()"
