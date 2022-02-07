@@ -10,6 +10,8 @@ It is an application for simple managing invoices, created in Angular.
 - TypeScript
 - Bootstrap
 
+## Working Application
+https://dariuszokonski.github.io/
 ## Installing
 - Node is needed to be installed on a local machine
 - Download repository
