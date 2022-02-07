@@ -11,7 +11,7 @@ It is an application for simple managing invoices, created in Angular.
 - Bootstrap
 
 ## Installing
-- Node is needed to be installed on local machine
+- Node is needed to be installed on a local machine
 - Download repository
 - Open terminal in repository main folder
 - Type: npm install
