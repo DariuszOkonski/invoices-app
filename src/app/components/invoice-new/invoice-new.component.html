@@ -1,8 +1,12 @@
-<p class="h2 mb-3">New Invoice</p>
 
 <div 
-  *ngIf="onIsPermitedHighAccess()"
-  class="card card-body">
+*ngIf="onIsPermitedHighAccess()"
+class="card">
+  <div class="card-header">
+    <h4 class="card-title">New Invoice</h4>
+  </div>
+  
+  <div class="card-body">
     <form>
       <div class="form-group">
         <label for="invoice-number">Invoice Number:</label>
@@ -111,7 +115,8 @@
             routerLink="/"
         >Cancel</button>
     </form>
-</div>
+  </div>
+  </div>
 
 <div
   *ngIf="!onIsPermitedHighAccess()"
