@@ -9,7 +9,6 @@ import { isPermitedHighAccess } from './../../utilities/utilities';
 @Component({
   selector: 'app-invoice-new',
   templateUrl: './invoice-new.component.html',
-  styleUrls: ['./invoice-new.component.css']
 })
 export class InvoiceNewComponent implements OnInit {
   number: string;
