@@ -7,10 +7,6 @@
             <h4 class="card-title">Supplier Data</h4>
         </div>
         <div class="card-body">
-            <p>{{ this.supplier.id }}</p>
-            <p>{{ this.supplier.name }}</p>
-            <p>{{ this.supplier.address }}</p>
-
             <form>
                 <div class="form-group">
                     <label for="date">ID:</label>
@@ -19,7 +15,7 @@
                             class="form-control" 
                             name="id"
                             id="id"
-                            value=""
+                            [value]="this.supplier.id"
                             [disabled]="true"
                         >
                 </div>
@@ -31,8 +27,8 @@
                             class="form-control" 
                             name="name"
                             id="name"
-                            value="Some Company"
-                            [disabled]="true"
+                            [(ngModel)]="this.supplier.name"                            
+                            [disabled]="this.isEditable"
                         >
                 </div>
 
@@ -43,26 +39,31 @@
                             class="form-control" 
                             name="address"
                             id="address"
-                            value="50 Main Street, London"
-                            [disabled]="true"
+                            [(ngModel)]="this.supplier.address"
+                            [disabled]="this.isEditable"
                         >
                 </div>
+
+                <span *ngIf="onIsPermitedLowAccess()">
+                    <button 
+                        (click)="onEdit()"
+                        class="btn btn-dark m-1"
+                    >Edit</button>
+                </span>
 
                 <button 
                     class="btn btn-primary m-1"
                     routerLink="/"
                     >Close</button>
-                
-                <button 
-                    *ngIf="onIsPermitedLowAccess()"
-                    class="btn btn-dark m-1"
-                >Edit</button>
-                
-                <button 
-                    *ngIf="onIsPermitedLowAccess()"
-                    class="btn btn-secondary m-1"
-                    routerLink="/"
-                    >Save</button>
+                 
+                <span *ngIf="onIsPermitedLowAccess()">
+                     <button                     
+                         *ngIf="this.isEditable"
+                         (click)="onSaveSupplier()"
+                         class="btn btn-secondary m-1"
+                         routerLink="/"                         
+                         >Save</button>
+                 </span>             
                 
             </form>
         </div>

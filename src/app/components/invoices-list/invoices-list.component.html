@@ -2,9 +2,9 @@
 
 
 <div 
-  *ngIf="onIsPermitedHighAccess()"
   id="dropdown" class="mb-3">
   <select 
+    [disabled]="!onIsPermitedHighAccess()"
     [(ngModel)] = "supplierSelected"
     (ngModelChange)="onFilterInvoicesBySupplierName($event)"
   >
@@ -16,7 +16,7 @@
 </div>
 
 
-<table class="table">
+<table *ngIf="this.invoices.length > 0" class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Invoice Number</th>
@@ -50,3 +50,14 @@
       </tr>
     </tbody>
   </table>
+
+  <div
+  *ngIf="this.invoices.length === 0"
+  >
+    <div class="card">
+      <div class="card-body">
+        <h5>No data to display</h5>
+      </div>
+    </div>
+
+  </div>

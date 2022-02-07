@@ -153,6 +153,28 @@ export class DataService {
     return this.invoices.filter(invoice => invoice.number === id);
   }
 
+  saveEditedSupplier(supplier: Supplier) {
+    console.log('data service')
+    console.log(supplier)
+
+    this.suppliers = this.suppliers.map(sup => {
+      if(sup.id === supplier.id)
+        return supplier;
+      return sup
+    });
+
+    this.invoices = this.invoices.map(inv => {
+      if(inv.supplier.id === supplier.id) {
+        return {
+          ...inv,
+          supplier
+        }
+      }
+      
+      return inv
+    })
+  }
+
   // TODO - temporarly, write logic
   getSupplier(id: string) {
     const tempSupplier = this.suppliers.find(supplier => supplier.id === id);

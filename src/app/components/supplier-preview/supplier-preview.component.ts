@@ -11,7 +11,8 @@ import { isPermitedHighAccess, isPermitedLowAccess } from './../../utilities/uti
   styleUrls: ['./supplier-preview.component.css']
 })
 export class SupplierPreviewComponent implements OnInit {
-  supplier: Supplier
+  supplier: Supplier;
+  isEditable: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,18 +26,25 @@ export class SupplierPreviewComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('Supplier Preview class')
     const { id } = this.route.snapshot.params;
-
     this.supplier = this.dataService.getSupplier(id);
+  }
 
-    console.log(this.supplier)
+  onEdit() {
+    this.isEditable = !this.isEditable;
+  }
+
+  onSaveSupplier() {
+    this.dataService.saveEditedSupplier(this.supplier);
   }
 
   onIsPermitedHighAccess() {
+    if(this.dataService.getCurrentRole() === Roles.USER && !this.isEditable) {     
+      this.isEditable = true;
+    }
     return isPermitedHighAccess(Roles[this.dataService.getCurrentRole()]);
   }
-
+  
   onIsPermitedLowAccess() {
     return isPermitedLowAccess(Roles[this.dataService.getCurrentRole()])
   }
