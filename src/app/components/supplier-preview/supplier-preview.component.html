@@ -1,5 +1,6 @@
 <p class="h2 mb-3">Supplier Preview</p>
 
+<div *ngIf="!this.isError">
 <div 
     *ngIf="onIsPermitedHighAccess()"
     class="card">
@@ -68,9 +69,15 @@
             </form>
         </div>
   </div>
+</div>
 
 <div
-  *ngIf="!onIsPermitedHighAccess()"
+  *ngIf="!onIsPermitedHighAccess()
+  && !this.isError"
 >
-<app-no-access></app-no-access>
+    <app-no-access></app-no-access>
+</div>
+
+<div *ngIf="this.isError">
+    <app-not-found></app-not-found>
 </div>

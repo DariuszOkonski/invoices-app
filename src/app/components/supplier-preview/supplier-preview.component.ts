@@ -13,6 +13,7 @@ import { isPermitedHighAccess, isPermitedLowAccess } from './../../utilities/uti
 export class SupplierPreviewComponent implements OnInit {
   supplier: Supplier;
   isEditable: boolean = true;
+  isError = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,10 @@ export class SupplierPreviewComponent implements OnInit {
   ngOnInit(): void {
     const { id } = this.route.snapshot.params;
     this.supplier = this.dataService.getSupplier(id);
+
+    if(this.supplier.id === '') {
+      this.isError = true;
+    }
   }
 
   onEdit() {
