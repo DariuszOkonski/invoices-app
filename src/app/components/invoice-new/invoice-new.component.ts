@@ -52,10 +52,15 @@ export class InvoiceNewComponent implements OnInit {
       supplier: this.supplier,
       amount: this.amount
     }
-
-    if(!newInvoice.number || !newInvoice.orderAt || !newInvoice.supplier || !newInvoice.amount)
-      return;
       
+    if( 
+        newInvoice.supplier.id === '' || 
+        newInvoice.supplier.name === '' || 
+        newInvoice.supplier.address === '' ||
+        newInvoice.amount < 0
+      )return;
+
+
     this.dataService.addNewInvoice(newInvoice);   
   }
 
