@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
 import { Invoice } from './../../models/Invoice';
 import { Roles } from 'src/app/models/Roles';
@@ -12,12 +11,12 @@ import { isPermitedHighAccess } from './../../utilities/utilities';
   styleUrls: ['./invoice-preview.component.css']
 })
 export class InvoicePreviewComponent implements OnInit {
-  invoice: Invoice
+  invoice: Invoice;
+  isError: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private location: Location
   ) { 
     this.invoice = {
       number: '',
@@ -38,9 +37,13 @@ export class InvoicePreviewComponent implements OnInit {
   ngOnInit(): void {
     console.log('Invoice Preview class')
     const { id } = this.route.snapshot.params;
-    console.log(id)
     
-    this.invoice = this.dataService.getInvoice(id)[0];
+    this.invoice = this.dataService.getInvoice(id);
+    if(this.invoice.number === '') {
+      this.isError = true;
+    }
+
+    console.log(this.invoice)
   }
 
 }

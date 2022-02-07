@@ -150,7 +150,17 @@ export class DataService {
   }
 
   getInvoice(id: string) {
-    return this.invoices.filter(invoice => invoice.number === id);
+    const tempInvoice = this.invoices.find(invoice => invoice.number === id);
+
+    const invoice: Invoice = {
+      number: (tempInvoice === undefined) ? '' : tempInvoice.number,
+      orderAt: (tempInvoice === undefined) ? new Date() : tempInvoice.orderAt,
+      amount: (tempInvoice === undefined) ? 0 : tempInvoice.amount,
+      supplier: (tempInvoice === undefined) ? {id: '',name: '',address: ''} : tempInvoice.supplier,
+    }
+
+    return invoice;
+    // return this.invoices.filter(invoice => invoice.number === id);
   }
 
   saveEditedSupplier(supplier: Supplier) {
@@ -170,7 +180,7 @@ export class DataService {
           supplier
         }
       }
-      
+
       return inv
     })
   }

@@ -1,5 +1,6 @@
 <p class="h2 mb-3">Invoice Preview</p>
 
+<div *ngIf="!this.isError">
 <div 
     *ngIf="onIsPermitedHighAccess()"
     class="card">
@@ -31,9 +32,13 @@
         >Close</button>
     </div>
   </div>
+</div>
 
-  <div *ngIf="!onIsPermitedHighAccess()">
+  <div *ngIf="!onIsPermitedHighAccess() && !this.isError">
       <app-no-access></app-no-access>
   </div>
   
+  <div *ngIf="this.isError">
+    <app-not-found></app-not-found>
+  </div>
 
