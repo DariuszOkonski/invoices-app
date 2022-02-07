@@ -10,3 +10,10 @@
     background-color: #fff;
     color: #6c757d;
 }
+
+.buttons-container {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}

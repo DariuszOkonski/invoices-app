@@ -14,7 +14,7 @@
 </div>
 
 
-<table *ngIf="this.invoices.length > 0" class="table">
+<table *ngIf="this.invoices.length > 0" class="table table-responsive-sm">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Invoice Number</th>
@@ -29,18 +29,18 @@
         <td>{{ this.invoice.number | slice:0:6}}...</td>
         <td>{{ this.invoice.supplier.name }}</td>
         <td>{{ this.invoice.amount | currency: 'GBP' }}</td>
-        <td>
+        <td class="buttons-container">
           <button 
             *ngIf="onIsPermitedHighAccess()"
             routerLink="/invoices/{{ this.invoice.number }}"
-            class="btn btn-primary btn-sm m-1"
+            class="btn btn-primary btn-sm m-1 btn-block"
             routerLink="/invoices/1"
           >invoice</button>
           
           <button 
             *ngIf="onIsPermitedLowAccess()"
             routerLink="/suppliers/{{ this.invoice.supplier.id }}"
-            class="btn btn-secondary btn-sm m-1"
+            class="btn btn-secondary btn-sm m-1 btn-block"
             routerLink="/suppliers/3"
           >supplier</button>
         </td>
